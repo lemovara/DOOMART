@@ -10,21 +10,26 @@ const STORAGE_KEY = "doomart_cart";
 let cart = loadCart();
 
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
 
-    setupCart();
+        setupCart();
 
-    setupAddButtons();
+        setupAddButtons();
 
-    setupTicketButton();
+        setupTicketButton();
 
-    setupStreak();
+        setupBreakTicket();
 
-    renderCart();
+        setupStreak();
 
-    updateAddButtons();
+        renderCart();
 
-});
+        updateAddButtons();
+
+    }
+);
 
 
 // =========================================================
@@ -34,27 +39,50 @@ document.addEventListener("DOMContentLoaded", () => {
 function setupCart() {
 
     const openButton =
-        document.getElementById("doomcart-toggle");
+        document.getElementById(
+            "doomcart-toggle"
+        );
+
 
     const closeButton =
-        document.getElementById("doomcart-close");
+        document.getElementById(
+            "doomcart-close"
+        );
+
 
     const overlay =
-        document.getElementById("cart-overlay");
+        document.getElementById(
+            "cart-overlay"
+        );
 
 
     if (openButton) {
-        openButton.addEventListener("click", openCart);
+
+        openButton.addEventListener(
+            "click",
+            openCart
+        );
+
     }
 
 
     if (closeButton) {
-        closeButton.addEventListener("click", closeCart);
+
+        closeButton.addEventListener(
+            "click",
+            closeCart
+        );
+
     }
 
 
     if (overlay) {
-        overlay.addEventListener("click", closeCart);
+
+        overlay.addEventListener(
+            "click",
+            closeCart
+        );
+
     }
 
 }
@@ -63,17 +91,23 @@ function setupCart() {
 function openCart() {
 
     const panel =
-        document.getElementById("doomcart");
+        document.getElementById(
+            "doomcart"
+        );
+
 
     const overlay =
-        document.getElementById("cart-overlay");
+        document.getElementById(
+            "cart-overlay"
+        );
 
 
     panel.classList.add("open");
 
     overlay.classList.add("open");
 
-    document.body.style.overflow = "hidden";
+    document.body.style.overflow =
+        "hidden";
 
 }
 
@@ -81,17 +115,23 @@ function openCart() {
 function closeCart() {
 
     const panel =
-        document.getElementById("doomcart");
+        document.getElementById(
+            "doomcart"
+        );
+
 
     const overlay =
-        document.getElementById("cart-overlay");
+        document.getElementById(
+            "cart-overlay"
+        );
 
 
     panel.classList.remove("open");
 
     overlay.classList.remove("open");
 
-    document.body.style.overflow = "";
+    document.body.style.overflow =
+        "";
 
 }
 
@@ -105,11 +145,15 @@ function loadCart() {
     try {
 
         const saved =
-            localStorage.getItem(STORAGE_KEY);
+            localStorage.getItem(
+                STORAGE_KEY
+            );
 
 
         if (!saved) {
+
             return [];
+
         }
 
 
@@ -129,6 +173,7 @@ function loadCart() {
             error
         );
 
+
         return [];
 
     }
@@ -147,31 +192,35 @@ function saveCart() {
 
 
 // =========================================================
-// AGREGAR PRODUCTOS
+// AGREGAR
 // =========================================================
 
 function setupAddButtons() {
 
     const buttons =
-        document.querySelectorAll(".add-to-cart");
-
-
-    buttons.forEach(button => {
-
-        button.addEventListener(
-            "click",
-            () => {
-
-                addToCart(
-                    button.dataset.productId,
-                    button.dataset.productName,
-                    button.dataset.company
-                );
-
-            }
+        document.querySelectorAll(
+            ".add-to-cart"
         );
 
-    });
+
+    buttons.forEach(
+        button => {
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    addToCart(
+                        button.dataset.productId,
+                        button.dataset.productName,
+                        button.dataset.company
+                    );
+
+                }
+            );
+
+        }
+    );
 
 }
 
@@ -211,9 +260,13 @@ function addToCart(
 
 
     cart.push({
+
         id: id,
+
         name: name,
+
         company: company
+
     });
 
 
@@ -250,20 +303,30 @@ function removeFromCart(id) {
 
 
 // =========================================================
-// RENDER CARRITO
+// RENDER DOOMCART
 // =========================================================
 
 function renderCart() {
 
     const container =
-        document.getElementById("cart-items");
+        document.getElementById(
+            "cart-items"
+        );
+
 
     const counter =
-        document.getElementById("cart-count");
+        document.getElementById(
+            "cart-count"
+        );
 
 
-    if (!container || !counter) {
+    if (
+        !container ||
+        !counter
+    ) {
+
         return;
+
     }
 
 
@@ -276,9 +339,7 @@ function renderCart() {
         container.innerHTML = `
 
             <div class="cart-empty">
-
                 El DOOMCART está vacío.
-
             </div>
 
         `;
@@ -289,127 +350,152 @@ function renderCart() {
 
 
     container.innerHTML =
-        cart.map(item => `
+        cart.map(
+            item => `
 
-            <div class="cart-item">
+                <div class="cart-item">
 
-                <div class="cart-item-header">
+                    <div
+                        class="cart-item-header"
+                    >
 
-                    <div>
+                        <div>
 
-                        <div class="cart-item-name">
-                            ${escapeHtml(item.name)}
+                            <div
+                                class="cart-item-name"
+                            >
+                                ${escapeHtml(
+                                    item.name
+                                )}
+                            </div>
+
+                            <div
+                                class="cart-item-company"
+                            >
+                                ${escapeHtml(
+                                    item.company
+                                )}
+                            </div>
+
                         </div>
 
-                        <div class="cart-item-company">
-                            ${escapeHtml(item.company)}
-                        </div>
+
+                        <button
+                            type="button"
+                            class="remove-cart-item"
+                            data-remove-id="${item.id}"
+                        >
+                            ×
+                        </button>
 
                     </div>
 
-
-                    <button
-                        type="button"
-                        class="remove-cart-item"
-                        data-remove-id="${item.id}"
-                    >
-                        ×
-                    </button>
-
                 </div>
 
-            </div>
-
-        `).join("");
+            `
+        ).join("");
 
 
     document
-        .querySelectorAll(".remove-cart-item")
-        .forEach(button => {
+        .querySelectorAll(
+            ".remove-cart-item"
+        )
+        .forEach(
+            button => {
 
-            button.addEventListener(
-                "click",
-                () => {
+                button.addEventListener(
+                    "click",
+                    () => {
 
-                    removeFromCart(
-                        button.dataset.removeId
-                    );
+                        removeFromCart(
+                            button.dataset.removeId
+                        );
 
-                }
-            );
+                    }
+                );
 
-        });
+            }
+        );
 
 }
 
 
 // =========================================================
-// ESTADO DE BOTONES
+// BOTONES
 // =========================================================
 
 function updateAddButtons() {
 
     const buttons =
-        document.querySelectorAll(".add-to-cart");
+        document.querySelectorAll(
+            ".add-to-cart"
+        );
 
 
-    buttons.forEach(button => {
+    buttons.forEach(
+        button => {
 
-        const id =
-            button.dataset.productId;
-
-
-        const exists =
-            cart.some(
-                item => item.id === id
-            );
+            const id =
+                button.dataset.productId;
 
 
-        if (exists) {
+            const exists =
+                cart.some(
+                    item => item.id === id
+                );
 
-            button.disabled = true;
 
-            button.textContent =
-                "YA ESTÁ EN DOOMCART";
+            if (exists) {
 
-            return;
+                button.disabled = true;
+
+                button.textContent =
+                    "YA ESTÁ EN DOOMCART";
+
+                return;
+
+            }
+
+
+            if (
+                cart.length >=
+                MAX_PRODUCTS
+            ) {
+
+                button.disabled = true;
+
+                button.textContent =
+                    "LÍMITE DE 5";
+
+                return;
+
+            }
+
+
+            button.disabled = false;
+
+
+            button.innerHTML = `
+
+                <img
+                    src="/static/img/logo.png"
+                    alt=""
+                    class="button-logo"
+                >
+
+                AGREGAR AL DOOMCART
+
+            `;
 
         }
-
-
-        if (cart.length >= MAX_PRODUCTS) {
-
-            button.disabled = true;
-
-            button.textContent =
-                "LÍMITE DE 5";
-
-            return;
-
-        }
-
-
-        button.disabled = false;
-
-        button.innerHTML = `
-
-            <img
-                src="/static/img/logo.png"
-                alt=""
-                class="button-logo"
-            >
-
-            AGREGAR AL DOOMCART
-
-        `;
-
-    });
+    );
 
 }
 
 
 // =========================================================
-// TICKET
+// PARTE 4
+// GENERAR TICKET
 // =========================================================
 
 function setupTicketButton() {
@@ -421,7 +507,386 @@ function setupTicketButton() {
 
 
     if (!button) {
+
         return;
+
+    }
+
+
+    button.addEventListener(
+        "click",
+        generateTicket
+    );
+
+}
+
+
+async function generateTicket() {
+
+    if (cart.length === 0) {
+
+        showEmptyCartModal();
+
+        return;
+
+    }
+
+
+    const button =
+        document.getElementById(
+            "generate-ticket"
+        );
+
+
+    button.disabled = true;
+
+    button.textContent =
+        "GENERANDO TICKET...";
+
+
+    try {
+
+        const response =
+            await fetch(
+                "/api/ticket",
+                {
+
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body: JSON.stringify({
+                        productos:
+                            cart.map(
+                                item =>
+                                    item.id
+                            )
+                    })
+
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if (!response.ok || !data.ok) {
+
+            throw new Error(
+                data.error ||
+                "No se pudo generar el ticket."
+            );
+
+        }
+
+
+        renderDamageTicket(
+            data.productos
+        );
+
+
+        closeCart();
+
+        openDamageTicket();
+
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert(
+            error.message
+        );
+
+    } finally {
+
+        button.disabled = false;
+
+        button.textContent =
+            "GENERAR TICKET";
+
+    }
+
+}
+
+
+// =========================================================
+// MOSTRAR TICKET
+// =========================================================
+
+function openDamageTicket() {
+
+    const overlay =
+        document.getElementById(
+            "damage-ticket-overlay"
+        );
+
+
+    const ticket =
+        document.getElementById(
+            "damage-ticket"
+        );
+
+
+    if (!overlay || !ticket) {
+
+        return;
+
+    }
+
+
+    ticket.classList.remove(
+        "breaking"
+    );
+
+
+    overlay.classList.add(
+        "show"
+    );
+
+
+    document.body.style.overflow =
+        "hidden";
+
+}
+
+
+// =========================================================
+// CONTENIDO DEL TICKET
+// =========================================================
+
+function renderDamageTicket(
+    productos
+) {
+
+    const container =
+        document.getElementById(
+            "ticket-products"
+        );
+
+
+    if (!container) {
+
+        return;
+
+    }
+
+
+    container.innerHTML =
+        productos.map(
+            producto => `
+
+                <article
+                    class="ticket-product"
+                >
+
+                    <img
+                        src="/static/img/${escapeHtml(
+                            producto.imagen
+                        )}"
+                        alt="${escapeHtml(
+                            producto.nombre
+                        )}"
+                        class="ticket-product-image"
+                    >
+
+
+                    <div
+                        class="ticket-product-content"
+                    >
+
+                        <span
+                            class="ticket-company"
+                        >
+                            ${escapeHtml(
+                                producto.empresa
+                            )}
+                        </span>
+
+
+                        <h3>
+                            ${escapeHtml(
+                                producto.nombre
+                            )}
+                        </h3>
+
+
+                        <span
+                            class="ticket-label"
+                        >
+                            ${escapeHtml(
+                                producto.etiqueta
+                            )}
+                        </span>
+
+
+                        <p>
+                            ${escapeHtml(
+                                producto.descripcion
+                            )}
+                        </p>
+
+
+                        <div
+                            class="ticket-data"
+                        >
+
+                            <div
+                                class="ticket-data-row"
+                            >
+
+                                <strong>
+                                    Características
+                                </strong>
+
+                                <span>
+                                    ${escapeHtml(
+                                        producto.caracteristicas
+                                    )}
+                                </span>
+
+                            </div>
+
+
+                            <div
+                                class="ticket-data-row"
+                            >
+
+                                <strong>
+                                    Daño al suelo
+                                </strong>
+
+                                <span>
+                                    ${escapeHtml(
+                                        producto.danio_suelo
+                                    )}
+                                </span>
+
+                            </div>
+
+
+                            <div
+                                class="ticket-data-row"
+                            >
+
+                                <strong>
+                                    Daño al aire
+                                </strong>
+
+                                <span>
+                                    ${escapeHtml(
+                                        producto.danio_aire
+                                    )}
+                                </span>
+
+                            </div>
+
+
+                            <div
+                                class="ticket-data-row"
+                            >
+
+                                <strong>
+                                    Daño al agua
+                                </strong>
+
+                                <span>
+                                    ${escapeHtml(
+                                        producto.danio_agua
+                                    )}
+                                </span>
+
+                            </div>
+
+
+                            <div
+                                class="ticket-data-row"
+                            >
+
+                                <strong>
+                                    Uso de recursos
+                                </strong>
+
+                                <span>
+                                    ${escapeHtml(
+                                        producto.uso_recursos
+                                    )}
+                                </span>
+
+                            </div>
+
+
+                            <div
+                                class="ticket-data-row"
+                            >
+
+                                <strong>
+                                    Residuos
+                                </strong>
+
+                                <span>
+                                    ${escapeHtml(
+                                        producto.plasticos_residuos
+                                    )}
+                                </span>
+
+                            </div>
+
+
+                            <div
+                                class="ticket-data-row"
+                            >
+
+                                <strong>
+                                    Fuente
+                                </strong>
+
+                                <span>
+                                    ${escapeHtml(
+                                        producto.fuente
+                                    )}
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            `
+        ).join("");
+
+}
+
+
+// =========================================================
+// ROMPER TICKET
+// =========================================================
+
+function setupBreakTicket() {
+
+    const button =
+        document.getElementById(
+            "break-ticket"
+        );
+
+
+    const overlay =
+        document.getElementById(
+            "damage-ticket-overlay"
+        );
+
+
+    if (!button || !overlay) {
+
+        return;
+
     }
 
 
@@ -429,17 +894,36 @@ function setupTicketButton() {
         "click",
         () => {
 
-            if (cart.length === 0) {
-
-                showEmptyCartModal();
-
-                return;
-
-            }
+            const ticket =
+                document.getElementById(
+                    "damage-ticket"
+                );
 
 
-            alert(
-                "DOOMCART preparado. El TICKET DE DAÑO se conectará en la Parte 4."
+            ticket.classList.add(
+                "breaking"
+            );
+
+
+            setTimeout(
+                () => {
+
+                    overlay.classList.remove(
+                        "show"
+                    );
+
+
+                    ticket.classList.remove(
+                        "breaking"
+                    );
+
+
+                    document.body.style.overflow =
+                        "";
+
+
+                },
+                550
             );
 
         }
@@ -449,7 +933,7 @@ function setupTicketButton() {
 
 
 // =========================================================
-// MODAL
+// MODAL CARRITO VACÍO
 // =========================================================
 
 function showEmptyCartModal() {
@@ -460,7 +944,13 @@ function showEmptyCartModal() {
         );
 
 
-    modal.classList.add("show");
+    if (modal) {
+
+        modal.classList.add(
+            "show"
+        );
+
+    }
 
 }
 
@@ -476,7 +966,9 @@ document.addEventListener(
 
 
         if (!closeButton) {
+
             return;
+
         }
 
 
@@ -490,7 +982,9 @@ document.addEventListener(
                     );
 
 
-                modal.classList.remove("show");
+                modal.classList.remove(
+                    "show"
+                );
 
             }
         );
@@ -510,10 +1004,12 @@ function setupStreak() {
             "streak-number"
         );
 
+
     const addDay =
         document.getElementById(
             "add-day"
         );
+
 
     const breakStreak =
         document.getElementById(
@@ -526,7 +1022,9 @@ function setupStreak() {
         !addDay ||
         !breakStreak
     ) {
+
         return;
+
     }
 
 
@@ -555,13 +1053,19 @@ function setupStreak() {
             const now =
                 Date.now();
 
+
             const DAY =
-                24 * 60 * 60 * 1000;
+                24 *
+                60 *
+                60 *
+                1000;
 
 
             if (
                 lastDay &&
-                now - Number(lastDay) < DAY
+                now -
+                Number(lastDay) <
+                DAY
             ) {
 
                 alert(
@@ -627,16 +1131,44 @@ function setupStreak() {
 
 
 // =========================================================
-// SEGURIDAD HTML
+// SEGURIDAD
 // =========================================================
 
 function escapeHtml(value) {
 
+    if (value === null ||
+        value === undefined) {
+
+        return "";
+
+    }
+
+
     return String(value)
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
+
+        .replaceAll(
+            "&",
+            "&amp;"
+        )
+
+        .replaceAll(
+            "<",
+            "&lt;"
+        )
+
+        .replaceAll(
+            ">",
+            "&gt;"
+        )
+
+        .replaceAll(
+            '"',
+            "&quot;"
+        )
+
+        .replaceAll(
+            "'",
+            "&#039;"
+        );
 
 }
