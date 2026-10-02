@@ -6,86 +6,478 @@ DOOMART
 {% endblock %}
 
 
+
 {% block content %}
 
-<main>
 
-    <h1>DOOMART</h1>
+<!-- ==================================================
+     SLIDER 1
+     ================================================== -->
 
-    <p>
-        Cada vez que consumes estos productos,
-        imprimes estos tickets.
-    </p>
+<section class="product-slider-section">
 
-    <p>
-        Y no solo los pagas tú,
-        los paga el mundo.
-    </p>
+    <div class="container">
 
 
-    <!-- =================================================
-         PRODUCTOS
-         ================================================= -->
+        <div class="slider-heading">
 
-    <section>
-
-        <h2>Productos</h2>
-
-
-        {% if productos %}
-
-            {% for producto in productos %}
-
-                <article>
-
-                    <h3>
-                        {{ producto["nombre"] }}
-                    </h3>
-
-                    <p>
-                        {{ producto["leyenda"] }}
-                    </p>
-
-                    <p>
-                        {{ producto["descripcion"] }}
-                    </p>
-
-                    <p>
-                        Empresa:
-                        <strong>
-                            {{ producto["empresa"] }}
-                        </strong>
-                    </p>
-
-
-                    <!--
-                        Enlace para consultar la información
-                        de impacto de la empresa.
-                    -->
-
-                    <a
-                        href="{{ url_for(
-                            'producto',
-                            producto_id=producto['id']
-                        ) }}"
-                    >
-                        Ver daño
-                    </a>
-
-                </article>
-
-            {% endfor %}
-
-        {% else %}
+            <h1>
+                Los más dañinos
+            </h1>
 
             <p>
-                No hay productos registrados.
+                Checa los productos y conoce más sobre ellos.
             </p>
 
-        {% endif %}
+        </div>
 
-    </section>
 
-</main>
+        <div
+            id="sliderMasDaninos"
+            class="carousel slide doom-carousel"
+        >
+
+
+            <div class="carousel-indicators">
+
+                {% for slide in slides_mas_daninos %}
+
+                <button
+                    type="button"
+                    data-bs-target="#sliderMasDaninos"
+                    data-bs-slide-to="{{ loop.index0 }}"
+                    class="{% if loop.first %}active{% endif %}"
+                    aria-label="Slide {{ loop.index }}"
+                ></button>
+
+                {% endfor %}
+
+            </div>
+
+
+            <div class="carousel-inner">
+
+                {% for slide in slides_mas_daninos %}
+
+                <div
+                    class="carousel-item {% if loop.first %}active{% endif %}"
+                >
+
+                    <div class="row g-4">
+
+                        {% for producto in slide %}
+
+                        <div class="col-12 col-md-4">
+
+                            <article class="product-card">
+
+
+                                <div class="product-image-box">
+
+                                    <img
+                                        src="{{ url_for(
+                                            'static',
+                                            filename='img/' + producto['imagen']
+                                        ) }}"
+                                        alt="{{ producto['nombre'] }}"
+                                        class="product-image"
+                                    >
+
+
+                                    <span class="product-badge">
+
+                                        {{ producto['etiqueta'] }}
+
+                                    </span>
+
+                                </div>
+
+
+                                <div class="product-content">
+
+                                    <span class="product-company">
+
+                                        {{ producto['empresa'] }}
+
+                                    </span>
+
+
+                                    <h3>
+
+                                        {{ producto['nombre'] }}
+
+                                    </h3>
+
+
+                                    <p class="product-legend">
+
+                                        {{ producto['leyenda'] }}
+
+                                    </p>
+
+
+                                    <p class="product-description">
+
+                                        {{ producto['descripcion'] }}
+
+                                    </p>
+
+
+                                    <button
+                                        type="button"
+                                        class="add-to-cart product-button"
+                                        data-product-id="{{ producto['id'] }}"
+                                        data-product-name="{{ producto['nombre'] }}"
+                                        data-company="{{ producto['empresa'] }}"
+                                    >
+
+                                        <img
+                                            src="{{ url_for(
+                                                'static',
+                                                filename='img/logo.png'
+                                            ) }}"
+                                            alt=""
+                                            class="button-logo"
+                                        >
+
+                                        AGREGAR AL DOOMCART
+
+                                    </button>
+
+
+                                    <a
+                                        href="{{ url_for(
+                                            'producto',
+                                            producto_id=producto['id']
+                                        ) }}"
+                                        class="detail-link"
+                                    >
+                                        Ver información
+                                    </a>
+
+                                </div>
+
+
+                            </article>
+
+                        </div>
+
+                        {% endfor %}
+
+                    </div>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+
+            <button
+                class="carousel-control-prev"
+                type="button"
+                data-bs-target="#sliderMasDaninos"
+                data-bs-slide="prev"
+            >
+
+                <span class="carousel-control-prev-icon"></span>
+
+            </button>
+
+
+            <button
+                class="carousel-control-next"
+                type="button"
+                data-bs-target="#sliderMasDaninos"
+                data-bs-slide="next"
+            >
+
+                <span class="carousel-control-next-icon"></span>
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     SLIDER 2
+     ================================================== -->
+
+<section class="product-slider-section">
+
+    <div class="container">
+
+
+        <div class="slider-heading">
+
+            <h2>
+                Lo peor para tus pulmones
+            </h2>
+
+            <p>
+                Productos relacionados con contaminación y aire.
+            </p>
+
+        </div>
+
+
+        <div
+            id="sliderPulmones"
+            class="carousel slide doom-carousel"
+        >
+
+
+            <div class="carousel-indicators">
+
+                {% for slide in slides_pulmones %}
+
+                <button
+                    type="button"
+                    data-bs-target="#sliderPulmones"
+                    data-bs-slide-to="{{ loop.index0 }}"
+                    class="{% if loop.first %}active{% endif %}"
+                    aria-label="Slide {{ loop.index }}"
+                ></button>
+
+                {% endfor %}
+
+            </div>
+
+
+            <div class="carousel-inner">
+
+                {% for slide in slides_pulmones %}
+
+                <div
+                    class="carousel-item {% if loop.first %}active{% endif %}"
+                >
+
+                    <div class="row g-4">
+
+                        {% for producto in slide %}
+
+                        <div class="col-12 col-md-4">
+
+                            <article class="product-card">
+
+
+                                <div class="product-image-box">
+
+                                    <img
+                                        src="{{ url_for(
+                                            'static',
+                                            filename='img/' + producto['imagen']
+                                        ) }}"
+                                        alt="{{ producto['nombre'] }}"
+                                        class="product-image"
+                                    >
+
+
+                                    <span class="product-badge">
+
+                                        {{ producto['etiqueta'] }}
+
+                                    </span>
+
+                                </div>
+
+
+                                <div class="product-content">
+
+                                    <span class="product-company">
+
+                                        {{ producto['empresa'] }}
+
+                                    </span>
+
+
+                                    <h3>
+
+                                        {{ producto['nombre'] }}
+
+                                    </h3>
+
+
+                                    <p class="product-legend">
+
+                                        {{ producto['leyenda'] }}
+
+                                    </p>
+
+
+                                    <p class="product-description">
+
+                                        {{ producto['descripcion'] }}
+
+                                    </p>
+
+
+                                    <button
+                                        type="button"
+                                        class="add-to-cart product-button"
+                                        data-product-id="{{ producto['id'] }}"
+                                        data-product-name="{{ producto['nombre'] }}"
+                                        data-company="{{ producto['empresa'] }}"
+                                    >
+
+                                        <img
+                                            src="{{ url_for(
+                                                'static',
+                                                filename='img/logo.png'
+                                            ) }}"
+                                            alt=""
+                                            class="button-logo"
+                                        >
+
+                                        AGREGAR AL DOOMCART
+
+                                    </button>
+
+
+                                    <a
+                                        href="{{ url_for(
+                                            'producto',
+                                            producto_id=producto['id']
+                                        ) }}"
+                                        class="detail-link"
+                                    >
+                                        Ver información
+                                    </a>
+
+                                </div>
+
+
+                            </article>
+
+                        </div>
+
+                        {% endfor %}
+
+                    </div>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+
+            <button
+                class="carousel-control-prev"
+                type="button"
+                data-bs-target="#sliderPulmones"
+                data-bs-slide="prev"
+            >
+
+                <span class="carousel-control-prev-icon"></span>
+
+            </button>
+
+
+            <button
+                class="carousel-control-next"
+                type="button"
+                data-bs-target="#sliderPulmones"
+                data-bs-slide="next"
+            >
+
+                <span class="carousel-control-next-icon"></span>
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     RACHA
+     ================================================== -->
+
+<section class="streak-section">
+
+    <div class="container">
+
+        <div class="streak-card">
+
+
+            <div class="streak-logo">
+
+                <img
+                    src="{{ url_for('static', filename='img/logo.png') }}"
+                    alt="DOOMART"
+                >
+
+            </div>
+
+
+            <h2>
+                Días sin consumir productos contaminantes
+            </h2>
+
+
+            <div
+                id="streak-number"
+                class="streak-number"
+            >
+                0
+            </div>
+
+
+            <div class="streak-buttons">
+
+                <button
+                    id="add-day"
+                    type="button"
+                    class="streak-button"
+                >
+                    + DÍA
+                </button>
+
+
+                <button
+                    id="break-streak"
+                    type="button"
+                    class="streak-button danger"
+                >
+                    ENTRÉ AL DOOMART
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     FOOTER
+     ================================================== -->
+
+<footer class="doom-footer">
+
+    <p>
+        Leonel Guevara Montellano · Luis Angel Martinez ·
+        Sebastian Palma · Juan Pablo Monterrosas
+    </p>
+
+    <strong>
+        CADA VEZ QUE CONSUMES ESTOS PRODUCTOS IMPRIMES ESTOS
+        TICKETS. Y NO SOLO LOS PAGAS TÚ, LOS PAGA EL MUNDO.
+    </strong>
+
+</footer>
+
 
 {% endblock %}

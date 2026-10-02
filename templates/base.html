@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="es">
 
 <head>
@@ -10,10 +11,17 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>{% block title %}DOOMART{% endblock %}</title>
+    <title>
+        {% block title %}DOOMART{% endblock %}
+    </title>
 
 
-    <!-- CSS -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+
     <link
         rel="stylesheet"
         href="{{ url_for('static', filename='css/style.css') }}"
@@ -21,21 +29,212 @@
 
 </head>
 
+
 <body>
 
-    <!--
-        Cada página hija podrá modificar
-        esta sección.
-    -->
+
+    <!-- ==================================================
+         HEADER
+         ================================================== -->
+
+    <header class="doom-header">
+
+        <div class="container">
+
+            <div class="doom-header-inner">
+
+
+                <a
+                    href="{{ url_for('index') }}"
+                    class="doom-brand"
+                >
+                    DOOMART
+                </a>
+
+
+                <button
+                    id="doomcart-toggle"
+                    type="button"
+                    class="doomcart-toggle"
+                    aria-label="Abrir DOOMCART"
+                >
+
+                    <img
+                        src="{{ url_for('static', filename='img/cart.png') }}"
+                        alt="Carrito"
+                        class="cart-icon"
+                    >
+
+                    <span class="doomcart-name">
+                        DOOMCART
+                    </span>
+
+                    <span
+                        id="cart-count"
+                        class="cart-count"
+                    >
+                        0
+                    </span>
+
+                </button>
+
+
+            </div>
+
+        </div>
+
+    </header>
+
+
 
     {% block content %}
     {% endblock %}
 
 
-    <!-- JavaScript -->
+
+    <!-- ==================================================
+         OVERLAY
+         ================================================== -->
+
+    <div
+        id="cart-overlay"
+        class="cart-overlay"
+    ></div>
+
+
+
+    <!-- ==================================================
+         DOOMCART
+         ================================================== -->
+
+    <aside
+        id="doomcart"
+        class="doomcart-panel"
+    >
+
+        <div class="doomcart-header">
+
+            <h2>
+                DOOMCART
+            </h2>
+
+            <button
+                id="doomcart-close"
+                class="doomcart-close"
+                type="button"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="doomcart-body">
+
+
+            <div
+                id="doomcart-skull-animation"
+                class="doomcart-logo"
+            >
+
+                <img
+                    src="{{ url_for('static', filename='img/logo.png') }}"
+                    alt="DOOMART"
+                >
+
+            </div>
+
+
+            <div id="cart-items">
+
+                <div class="cart-empty">
+                    El DOOMCART está vacío.
+                </div>
+
+            </div>
+
+
+            <div class="doom-warning">
+
+                <strong>
+                    CADA COMPRA GENERA UN TICKET
+                </strong>
+
+                <p>
+                    Los productos seleccionados
+                    aparecerán en tu ticket de daño.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="doomcart-footer">
+
+            <button
+                id="generate-ticket"
+                type="button"
+                class="doom-ticket-button"
+            >
+                GENERAR TICKET
+            </button>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- ==================================================
+         MODAL
+         ================================================== -->
+
+    <div
+        id="emptyCartModal"
+        class="custom-modal"
+    >
+
+        <div class="custom-modal-box">
+
+            <button
+                id="close-empty-modal"
+                class="custom-modal-close"
+                type="button"
+            >
+                ×
+            </button>
+
+            <img
+                src="{{ url_for('static', filename='img/logo.png') }}"
+                alt="DOOMART"
+                class="modal-logo"
+            >
+
+            <h2>
+                DOOMCART VACÍO
+            </h2>
+
+            <p>
+                Agrega por lo menos un producto
+                antes de generar el ticket.
+            </p>
+
+        </div>
+
+    </div>
+
+
+
     <script
-        src="{{ url_for('static', filename='js/main.js') }}">
-    </script>
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    ></script>
+
+
+    <script
+        src="{{ url_for('static', filename='js/main.js') }}"
+    ></script>
+
 
 </body>
 

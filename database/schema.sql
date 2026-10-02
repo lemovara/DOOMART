@@ -1,19 +1,3 @@
--- =========================================================
--- DOOMART
--- Estructura inicial de la base de datos
--- =========================================================
-
-
--- =========================================================
--- TABLA: empresas
--- =========================================================
--- Aquí almacenamos la información ambiental/social
--- asociada con cada empresa.
---
--- Los campos corresponden a los requerimientos del
--- proyecto.
--- =========================================================
-
 CREATE TABLE IF NOT EXISTS empresas (
 
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -35,27 +19,8 @@ CREATE TABLE IF NOT EXISTS empresas (
     plasticos_residuos TEXT,
 
     fuente TEXT
-
 );
 
-
--- =========================================================
--- TABLA: productos
--- =========================================================
--- Un producto pertenece a una empresa.
---
--- Ejemplo:
---
--- Coca-Cola
---      ↓
--- Coca-Cola (producto)
---
--- Pepsi
---      ↓
--- Producto Pepsi
---
--- etc.
--- =========================================================
 
 CREATE TABLE IF NOT EXISTS productos (
 
@@ -69,8 +34,13 @@ CREATE TABLE IF NOT EXISTS productos (
 
     imagen TEXT,
 
+    etiqueta TEXT,
+
+    seccion TEXT NOT NULL,
+
     empresa_id INTEGER NOT NULL,
 
     FOREIGN KEY (empresa_id)
         REFERENCES empresas(id)
+
 );

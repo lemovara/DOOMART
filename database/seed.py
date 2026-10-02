@@ -1,74 +1,106 @@
-# =========================================================
-# DOOMART
-# Datos iniciales para SQLite
-# =========================================================
-
 from db import get_db, init_db
 
 
 def insertar_datos():
 
-    # Primero comprobamos que las tablas existan.
     init_db()
 
     db = get_db()
 
     try:
 
-        # =================================================
+        # ==================================================
+        # LIMPIAR PRODUCTOS
+        # ==================================================
+
+        db.execute("DELETE FROM productos")
+        db.execute("DELETE FROM empresas")
+
+
+        # ==================================================
         # EMPRESAS
-        # =================================================
+        # ==================================================
 
         empresas = [
 
             (
                 "COCA COLA CO",
-                "Empresa utilizada como ejemplo dentro del proyecto DOOMART.",
                 "Empresa de bebidas.",
-                "Dato de ejemplo indicado en el documento del proyecto.",
-                "No especificado en el documento.",
-                "No especificado en el documento.",
-                "55 mil millones de litros de agua consumidos.",
-                "No especificado en el documento.",
-                "Dato de ejemplo del documento; verificar y documentar "
-                "la fuente antes de usarlo como dato público."
+                "Empresa de bebidas.",
+                "Pendiente de documentar.",
+                "Pendiente de documentar.",
+                "Pendiente de documentar.",
+                "Pendiente de documentar.",
+                "Pendiente de documentar.",
+                "Pendiente de verificación."
             ),
 
             (
                 "PEPSI CO",
-                "Empresa utilizada como ejemplo dentro del proyecto DOOMART.",
                 "Empresa de bebidas.",
-                "No especificado en el documento.",
-                "No especificado en el documento.",
-                "No especificado en el documento.",
-                "No especificado en el documento.",
-                "No especificado en el documento.",
-                "Ejemplo tomado del documento del proyecto."
+                "Empresa de bebidas.",
+                "Pendiente de documentar.",
+                "Pendiente de documentar.",
+                "Pendiente de documentar.",
+                "Pendiente de documentar.",
+                "Pendiente de documentar.",
+                "Pendiente de verificación."
+            ),
+
+            (
+                "DANONE",
+                "Empresa de productos alimenticios.",
+                "Productos alimenticios.",
+                "Pendiente de documentar.",
+                "Pendiente de documentar.",
+                "Pendiente de documentar.",
+                "Pendiente de documentar.",
+                "Pendiente de documentar.",
+                "Pendiente de verificación."
             ),
 
             (
                 "CHEVRON",
-                "Empresa utilizada como ejemplo dentro del proyecto DOOMART.",
-                "Empresa relacionada con producción energética.",
-                "No especificado en el documento.",
+                "Empresa energética.",
+                "Empresa energética.",
+                "Pendiente de documentar.",
                 "Producción de gases tóxicos.",
-                "No especificado en el documento.",
-                "No especificado en el documento.",
-                "No especificado en el documento.",
-                "Dato de ejemplo del documento; verificar y documentar "
-                "la fuente antes de usarlo como dato público."
+                "Pendiente de documentar.",
+                "Pendiente de documentar.",
+                "Pendiente de documentar.",
+                "Pendiente de verificación."
+            ),
+
+            (
+                "CHINA COAL",
+                "Empresa relacionada con producción energética.",
+                "Producción energética.",
+                "Pendiente de documentar.",
+                "Pendiente de documentar.",
+                "Pendiente de documentar.",
+                "Pendiente de documentar.",
+                "Pendiente de documentar.",
+                "Pendiente de verificación."
+            ),
+
+            (
+                "ACH COAL",
+                "Empresa relacionada con producción energética.",
+                "Producción energética.",
+                "Pendiente de documentar.",
+                "Pendiente de documentar.",
+                "Pendiente de documentar.",
+                "Pendiente de documentar.",
+                "Pendiente de documentar.",
+                "Pendiente de verificación."
             )
 
         ]
 
 
-        # -------------------------------------------------
-        # INSERTAR EMPRESAS
-        # -------------------------------------------------
-
         db.executemany(
             """
-            INSERT OR IGNORE INTO empresas
+            INSERT INTO empresas
             (
                 nombre,
                 descripcion,
@@ -86,59 +118,92 @@ def insertar_datos():
         )
 
 
-        # =================================================
-        # OBTENER IDS DE LAS EMPRESAS
-        # =================================================
+        # ==================================================
+        # IDS
+        # ==================================================
 
-        empresas_db = db.execute(
+        registros = db.execute(
             """
             SELECT id, nombre
             FROM empresas
             """
         ).fetchall()
 
+
         empresa_ids = {
             empresa["nombre"]: empresa["id"]
-            for empresa in empresas_db
+            for empresa in registros
         }
 
 
-        # =================================================
+        # ==================================================
         # PRODUCTOS
-        # =================================================
+        # ==================================================
 
         productos = [
 
             (
                 "Coca-Cola",
-                "Ejemplo de producto para DOOMART",
-                "Producto de demostración asociado a COCA COLA CO.",
+                "Producto de consumo masivo.",
+                "Producto asociado a COCA COLA CO.",
                 "coca-cola.png",
+                "DIABETES",
+                "mas_daninos",
                 empresa_ids["COCA COLA CO"]
             ),
 
             (
                 "Pepsi",
-                "Ejemplo de producto para DOOMART",
-                "Producto de demostración asociado a PEPSI CO.",
+                "Producto de consumo masivo.",
+                "Producto asociado a PEPSI CO.",
                 "pepsi.png",
+                "OBESIDAD",
+                "mas_daninos",
                 empresa_ids["PEPSI CO"]
             ),
 
             (
+                "Danone",
+                "Producto alimenticio.",
+                "Producto asociado a DANONE.",
+                "danone.png",
+                "FALLOS RESPIRATORIOS",
+                "mas_daninos",
+                empresa_ids["DANONE"]
+            ),
+
+            (
                 "Chevron",
-                "Ejemplo de producto para DOOMART",
-                "Producto de demostración asociado a CHEVRON.",
+                "Empresa relacionada con energía.",
+                "Producto asociado a CHEVRON.",
                 "chevron.png",
+                "CONTAMINACIÓN",
+                "pulmones",
                 empresa_ids["CHEVRON"]
+            ),
+
+            (
+                "China Coal",
+                "Producción energética.",
+                "Producto asociado a CHINA COAL.",
+                "china-coal.png",
+                "CALIDAD DEL AIRE",
+                "pulmones",
+                empresa_ids["CHINA COAL"]
+            ),
+
+            (
+                "ACH Coal",
+                "Producción energética.",
+                "Producto asociado a ACH COAL.",
+                "ach-coal.png",
+                "GASES TÓXICOS",
+                "pulmones",
+                empresa_ids["ACH COAL"]
             )
 
         ]
 
-
-        # -------------------------------------------------
-        # INSERTAR PRODUCTOS
-        # -------------------------------------------------
 
         db.executemany(
             """
@@ -148,32 +213,25 @@ def insertar_datos():
                 leyenda,
                 descripcion,
                 imagen,
+                etiqueta,
+                seccion,
                 empresa_id
             )
-            VALUES (?, ?, ?, ?, ?)
+            VALUES (?, ?, ?, ?, ?, ?, ?)
             """,
             productos
         )
 
 
-        # Guardamos.
         db.commit()
 
-        print("========================================")
-        print(" BASE DE DATOS DOOMART INICIALIZADA")
-        print("========================================")
-        print("Empresas y productos insertados.")
-        print("========================================")
+        print("DOOMART: base de datos cargada correctamente.")
 
 
     finally:
 
         db.close()
 
-
-# ---------------------------------------------------------
-# PUNTO DE ENTRADA
-# ---------------------------------------------------------
 
 if __name__ == "__main__":
     insertar_datos()

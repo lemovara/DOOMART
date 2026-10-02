@@ -8,150 +8,116 @@
 
 {% block content %}
 
-<main>
+<section class="detail-section">
 
-    <!-- =================================================
-         PRODUCTO
-         ================================================= -->
+    <div class="container">
 
-    <h1>
-        {{ producto["nombre"] }}
-    </h1>
+        <article class="detail-card">
 
 
-    <p>
-        {{ producto["descripcion"] }}
-    </p>
+            <div class="detail-image-box">
+
+                <img
+                    src="{{ url_for(
+                        'static',
+                        filename='img/' + producto['imagen']
+                    ) }}"
+                    alt="{{ producto['nombre'] }}"
+                    class="detail-image"
+                >
+
+                <span class="product-badge">
+
+                    {{ producto["etiqueta"] }}
+
+                </span>
+
+            </div>
 
 
-    <h2>
-        {{ producto["empresa"] }}
-    </h2>
+
+            <div class="detail-content">
+
+                <span class="product-company">
+
+                    {{ producto["empresa"] }}
+
+                </span>
 
 
-    <!-- =================================================
-         CARACTERÍSTICAS
-         ================================================= -->
+                <h1>
 
-    <section>
+                    {{ producto["nombre"] }}
 
-        <h3>
-            Características
-        </h3>
-
-        <p>
-            {{ producto["caracteristicas"] }}
-        </p>
-
-    </section>
+                </h1>
 
 
-    <!-- =================================================
-         DAÑO AL SUELO
-         ================================================= -->
+                <p>
 
-    <section>
+                    {{ producto["descripcion"] }}
 
-        <h3>
-            Daño al suelo
-        </h3>
-
-        <p>
-            {{ producto["danio_suelo"] }}
-        </p>
-
-    </section>
+                </p>
 
 
-    <!-- =================================================
-         DAÑO AL AIRE
-         ================================================= -->
+                <div class="detail-info">
 
-    <section>
-
-        <h3>
-            Daño al aire
-        </h3>
-
-        <p>
-            {{ producto["danio_aire"] }}
-        </p>
-
-    </section>
+                    <div>
+                        <h3>Características</h3>
+                        <p>{{ producto["caracteristicas"] }}</p>
+                    </div>
 
 
-    <!-- =================================================
-         DAÑO AL AGUA
-         ================================================= -->
-
-    <section>
-
-        <h3>
-            Daño al agua
-        </h3>
-
-        <p>
-            {{ producto["danio_agua"] }}
-        </p>
-
-    </section>
+                    <div>
+                        <h3>Daño al suelo</h3>
+                        <p>{{ producto["danio_suelo"] }}</p>
+                    </div>
 
 
-    <!-- =================================================
-         USO DE RECURSOS
-         ================================================= -->
-
-    <section>
-
-        <h3>
-            Uso de recursos
-        </h3>
-
-        <p>
-            {{ producto["uso_recursos"] }}
-        </p>
-
-    </section>
+                    <div>
+                        <h3>Daño al aire</h3>
+                        <p>{{ producto["danio_aire"] }}</p>
+                    </div>
 
 
-    <!-- =================================================
-         PLÁSTICOS Y RESIDUOS
-         ================================================= -->
-
-    <section>
-
-        <h3>
-            Plásticos y residuos
-        </h3>
-
-        <p>
-            {{ producto["plasticos_residuos"] }}
-        </p>
-
-    </section>
+                    <div>
+                        <h3>Daño al agua</h3>
+                        <p>{{ producto["danio_agua"] }}</p>
+                    </div>
 
 
-    <!-- =================================================
-         FUENTE
-         ================================================= -->
-
-    <section>
-
-        <h3>
-            Fuente
-        </h3>
-
-        <p>
-            {{ producto["fuente"] }}
-        </p>
-
-    </section>
+                    <div>
+                        <h3>Uso de recursos</h3>
+                        <p>{{ producto["uso_recursos"] }}</p>
+                    </div>
 
 
-    <a href="{{ url_for('index') }}">
-        Regresar
-    </a>
+                    <div>
+                        <h3>Plásticos y residuos</h3>
+                        <p>{{ producto["plasticos_residuos"] }}</p>
+                    </div>
 
-</main>
+
+                    <div>
+                        <h3>Fuente</h3>
+                        <p>{{ producto["fuente"] }}</p>
+                    </div>
+
+                </div>
+
+
+                <a
+                    href="{{ url_for('index') }}"
+                    class="back-button"
+                >
+                    REGRESAR
+                </a>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
 
 {% endblock %}
