@@ -1,0 +1,157 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+{{ producto["nombre"] }} | DOOMART
+{% endblock %}
+
+
+{% block content %}
+
+<main>
+
+    <!-- =================================================
+         PRODUCTO
+         ================================================= -->
+
+    <h1>
+        {{ producto["nombre"] }}
+    </h1>
+
+
+    <p>
+        {{ producto["descripcion"] }}
+    </p>
+
+
+    <h2>
+        {{ producto["empresa"] }}
+    </h2>
+
+
+    <!-- =================================================
+         CARACTERÍSTICAS
+         ================================================= -->
+
+    <section>
+
+        <h3>
+            Características
+        </h3>
+
+        <p>
+            {{ producto["caracteristicas"] }}
+        </p>
+
+    </section>
+
+
+    <!-- =================================================
+         DAÑO AL SUELO
+         ================================================= -->
+
+    <section>
+
+        <h3>
+            Daño al suelo
+        </h3>
+
+        <p>
+            {{ producto["danio_suelo"] }}
+        </p>
+
+    </section>
+
+
+    <!-- =================================================
+         DAÑO AL AIRE
+         ================================================= -->
+
+    <section>
+
+        <h3>
+            Daño al aire
+        </h3>
+
+        <p>
+            {{ producto["danio_aire"] }}
+        </p>
+
+    </section>
+
+
+    <!-- =================================================
+         DAÑO AL AGUA
+         ================================================= -->
+
+    <section>
+
+        <h3>
+            Daño al agua
+        </h3>
+
+        <p>
+            {{ producto["danio_agua"] }}
+        </p>
+
+    </section>
+
+
+    <!-- =================================================
+         USO DE RECURSOS
+         ================================================= -->
+
+    <section>
+
+        <h3>
+            Uso de recursos
+        </h3>
+
+        <p>
+            {{ producto["uso_recursos"] }}
+        </p>
+
+    </section>
+
+
+    <!-- =================================================
+         PLÁSTICOS Y RESIDUOS
+         ================================================= -->
+
+    <section>
+
+        <h3>
+            Plásticos y residuos
+        </h3>
+
+        <p>
+            {{ producto["plasticos_residuos"] }}
+        </p>
+
+    </section>
+
+
+    <!-- =================================================
+         FUENTE
+         ================================================= -->
+
+    <section>
+
+        <h3>
+            Fuente
+        </h3>
+
+        <p>
+            {{ producto["fuente"] }}
+        </p>
+
+    </section>
+
+
+    <a href="{{ url_for('index') }}">
+        Regresar
+    </a>
+
+</main>
+
+{% endblock %}

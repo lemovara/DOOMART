@@ -22,6 +22,70 @@ DOOMART
         los paga el mundo.
     </p>
 
+
+    <!-- =================================================
+         PRODUCTOS
+         ================================================= -->
+
+    <section>
+
+        <h2>Productos</h2>
+
+
+        {% if productos %}
+
+            {% for producto in productos %}
+
+                <article>
+
+                    <h3>
+                        {{ producto["nombre"] }}
+                    </h3>
+
+                    <p>
+                        {{ producto["leyenda"] }}
+                    </p>
+
+                    <p>
+                        {{ producto["descripcion"] }}
+                    </p>
+
+                    <p>
+                        Empresa:
+                        <strong>
+                            {{ producto["empresa"] }}
+                        </strong>
+                    </p>
+
+
+                    <!--
+                        Enlace para consultar la información
+                        de impacto de la empresa.
+                    -->
+
+                    <a
+                        href="{{ url_for(
+                            'producto',
+                            producto_id=producto['id']
+                        ) }}"
+                    >
+                        Ver daño
+                    </a>
+
+                </article>
+
+            {% endfor %}
+
+        {% else %}
+
+            <p>
+                No hay productos registrados.
+            </p>
+
+        {% endif %}
+
+    </section>
+
 </main>
 
 {% endblock %}
