@@ -7,6 +7,14 @@ const MAX_PRODUCTS = 5;
 
 const STORAGE_KEY = "doomart_cart";
 
+const STREAK_KEY = "doomart_streak";
+
+const STREAK_DATE_KEY = "doomart_last_day";
+
+const DAY_MS =
+    24 * 60 * 60 * 1000;
+
+
 let cart = loadCart();
 
 
@@ -102,6 +110,13 @@ function openCart() {
         );
 
 
+    if (!panel || !overlay) {
+
+        return;
+
+    }
+
+
     panel.classList.add("open");
 
     overlay.classList.add("open");
@@ -126,18 +141,24 @@ function closeCart() {
         );
 
 
+    if (!panel || !overlay) {
+
+        return;
+
+    }
+
+
     panel.classList.remove("open");
 
     overlay.classList.remove("open");
 
-    document.body.style.overflow =
-        "";
+    document.body.style.overflow = "";
 
 }
 
 
 // =========================================================
-// LOCAL STORAGE
+// CARRITO
 // =========================================================
 
 function loadCart() {
@@ -192,7 +213,7 @@ function saveCart() {
 
 
 // =========================================================
-// AGREGAR
+// AGREGAR PRODUCTO
 // =========================================================
 
 function setupAddButtons() {
@@ -320,10 +341,7 @@ function renderCart() {
         );
 
 
-    if (
-        !container ||
-        !counter
-    ) {
+    if (!container || !counter) {
 
         return;
 
@@ -339,7 +357,9 @@ function renderCart() {
         container.innerHTML = `
 
             <div class="cart-empty">
+
                 El DOOMCART está vacío.
+
             </div>
 
         `;
@@ -355,9 +375,7 @@ function renderCart() {
 
                 <div class="cart-item">
 
-                    <div
-                        class="cart-item-header"
-                    >
+                    <div class="cart-item-header">
 
                         <div>
 
@@ -421,7 +439,7 @@ function renderCart() {
 
 
 // =========================================================
-// BOTONES
+// BOTONES DE PRODUCTOS
 // =========================================================
 
 function updateAddButtons() {
@@ -447,7 +465,8 @@ function updateAddButtons() {
 
             if (exists) {
 
-                button.disabled = true;
+                button.disabled =
+                    true;
 
                 button.textContent =
                     "YA ESTÁ EN DOOMCART";
@@ -462,7 +481,8 @@ function updateAddButtons() {
                 MAX_PRODUCTS
             ) {
 
-                button.disabled = true;
+                button.disabled =
+                    true;
 
                 button.textContent =
                     "LÍMITE DE 5";
@@ -472,7 +492,8 @@ function updateAddButtons() {
             }
 
 
-            button.disabled = false;
+            button.disabled =
+                false;
 
 
             button.innerHTML = `
@@ -494,8 +515,7 @@ function updateAddButtons() {
 
 
 // =========================================================
-// PARTE 4
-// GENERAR TICKET
+// TICKET
 // =========================================================
 
 function setupTicketButton() {
@@ -561,8 +581,7 @@ async function generateTicket() {
                     body: JSON.stringify({
                         productos:
                             cart.map(
-                                item =>
-                                    item.id
+                                item => item.id
                             )
                     })
 
@@ -574,7 +593,10 @@ async function generateTicket() {
             await response.json();
 
 
-        if (!response.ok || !data.ok) {
+        if (
+            !response.ok ||
+            !data.ok
+        ) {
 
             throw new Error(
                 data.error ||
@@ -615,7 +637,7 @@ async function generateTicket() {
 
 
 // =========================================================
-// MOSTRAR TICKET
+// ABRIR TICKET
 // =========================================================
 
 function openDamageTicket() {
@@ -656,12 +678,10 @@ function openDamageTicket() {
 
 
 // =========================================================
-// CONTENIDO DEL TICKET
+// TICKET
 // =========================================================
 
-function renderDamageTicket(
-    productos
-) {
+function renderDamageTicket(productos) {
 
     const container =
         document.getElementById(
@@ -680,9 +700,7 @@ function renderDamageTicket(
         productos.map(
             producto => `
 
-                <article
-                    class="ticket-product"
-                >
+                <article class="ticket-product">
 
                     <img
                         src="/static/img/${escapeHtml(
@@ -699,9 +717,7 @@ function renderDamageTicket(
                         class="ticket-product-content"
                     >
 
-                        <span
-                            class="ticket-company"
-                        >
+                        <span class="ticket-company">
                             ${escapeHtml(
                                 producto.empresa
                             )}
@@ -715,9 +731,7 @@ function renderDamageTicket(
                         </h3>
 
 
-                        <span
-                            class="ticket-label"
-                        >
+                        <span class="ticket-label">
                             ${escapeHtml(
                                 producto.etiqueta
                             )}
@@ -731,9 +745,7 @@ function renderDamageTicket(
                         </p>
 
 
-                        <div
-                            class="ticket-data"
-                        >
+                        <div class="ticket-data">
 
                             <div
                                 class="ticket-data-row"
@@ -921,7 +933,6 @@ function setupBreakTicket() {
                     document.body.style.overflow =
                         "";
 
-
                 },
                 550
             );
@@ -1031,14 +1042,14 @@ function setupStreak() {
     let days =
         Number(
             localStorage.getItem(
-                "doomart_streak"
+                STREAK_KEY
             )
         ) || 0;
 
 
     let lastDay =
         localStorage.getItem(
-            "doomart_last_day"
+            STREAK_DATE_KEY
         );
 
 
@@ -1054,23 +1065,36 @@ function setupStreak() {
                 Date.now();
 
 
-            const DAY =
-                24 *
-                60 *
-                60 *
-                1000;
-
-
             if (
                 lastDay &&
                 now -
                 Number(lastDay) <
-                DAY
+                DAY_MS
             ) {
 
+                const remaining =
+                    DAY_MS -
+                    (
+                        now -
+                        Number(lastDay)
+                    );
+
+
+                const hours =
+                    Math.ceil(
+                        remaining /
+                        (
+                            60 *
+                            60 *
+                            1000
+                        )
+                    );
+
+
                 alert(
-                    "Todavía no han pasado 24 horas."
+                    `Todavía no puedes aumentar la racha. Faltan aproximadamente ${hours} hora(s).`
                 );
+
 
                 return;
 
@@ -1084,13 +1108,13 @@ function setupStreak() {
 
 
             localStorage.setItem(
-                "doomart_streak",
-                days
+                STREAK_KEY,
+                String(days)
             );
 
 
             localStorage.setItem(
-                "doomart_last_day",
+                STREAK_DATE_KEY,
                 lastDay
             );
 
@@ -1106,18 +1130,31 @@ function setupStreak() {
         "click",
         () => {
 
+            const confirmation =
+                confirm(
+                    "¿Quieres romper tu racha?"
+                );
+
+
+            if (!confirmation) {
+
+                return;
+
+            }
+
+
             days = 0;
 
             lastDay = null;
 
 
             localStorage.removeItem(
-                "doomart_streak"
+                STREAK_KEY
             );
 
 
             localStorage.removeItem(
-                "doomart_last_day"
+                STREAK_DATE_KEY
             );
 
 
@@ -1131,13 +1168,15 @@ function setupStreak() {
 
 
 // =========================================================
-// SEGURIDAD
+// ESCAPAR HTML
 // =========================================================
 
 function escapeHtml(value) {
 
-    if (value === null ||
-        value === undefined) {
+    if (
+        value === null ||
+        value === undefined
+    ) {
 
         return "";
 

@@ -1102,3 +1102,165 @@ body {
 
 }
 
+/* =========================================================
+   TEXTO DE RACHA
+   ========================================================= */
+
+.streak-text {
+    color: #555555;
+    margin-top: -10px;
+    margin-bottom: 25px;
+}
+
+
+/* =========================================================
+   NOTICIAS
+   ========================================================= */
+
+.news-section {
+    padding: 40px 0 100px;
+}
+
+
+.news-heading {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+
+.news-heading h2 {
+    margin: 0;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 900;
+}
+
+
+.news-heading p {
+    color: #666666;
+    margin-top: 8px;
+}
+
+
+.news-group {
+    margin-bottom: 60px;
+}
+
+
+.news-group > h3 {
+    margin-bottom: 20px;
+    font-size: 1.6rem;
+    font-weight: 900;
+}
+
+
+.news-card {
+    height: 100%;
+    background: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+
+.news-image-box {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: #eeeeee;
+}
+
+
+.news-image-box img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+
+.news-overlay {
+    position: absolute;
+    inset: auto 0 0 0;
+
+    padding: 16px;
+
+    background: rgba(255, 30, 30, 0.92);
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-weight: 900;
+
+    font-size: 0.9rem;
+
+    text-align: center;
+}
+
+
+.news-overlay:hover {
+    background: #d90000;
+    color: #ffffff;
+}
+
+
+.news-content {
+    padding: 20px;
+}
+
+
+.news-content > span {
+    color: #ff1e1e;
+
+    font-size: 0.75rem;
+
+    font-weight: 900;
+
+    text-transform: uppercase;
+}
+
+
+.news-content h4 {
+    margin: 7px 0;
+
+    font-size: 1.3rem;
+
+    font-weight: 900;
+}
+
+
+.news-content p {
+    margin: 0;
+
+    color: #555555;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   RESPONSIVE NOTICIAS
+   ========================================================= */
+
+@media (max-width: 767px) {
+
+    .news-section {
+        padding-bottom: 70px;
+    }
+
+
+    .news-group {
+        margin-bottom: 45px;
+    }
+
+
+    .news-overlay {
+        padding: 12px;
+
+        font-size: 0.8rem;
+    }
+
+}

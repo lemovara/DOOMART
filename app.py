@@ -77,6 +77,10 @@ def index():
         db.close()
 
 
+# =========================================================
+# DETALLE DE PRODUCTO
+# =========================================================
+
 @app.route("/producto/<int:producto_id>")
 def producto(producto_id):
 
@@ -116,6 +120,7 @@ def producto(producto_id):
 
 
         if producto is None:
+
             abort(404)
 
 
@@ -131,8 +136,7 @@ def producto(producto_id):
 
 
 # =========================================================
-# PARTE 4
-# GENERAR TICKET DE DAÑO
+# GENERAR TICKET
 # =========================================================
 
 @app.route("/api/ticket", methods=["POST"])
@@ -192,7 +196,6 @@ def generar_ticket():
 
 
     db = get_db()
-
 
     try:
 
@@ -306,6 +309,10 @@ def generar_ticket():
 
         db.close()
 
+
+# =========================================================
+# EJECUTAR
+# =========================================================
 
 if __name__ == "__main__":
 

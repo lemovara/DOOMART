@@ -6,7 +6,6 @@ DOOMART
 {% endblock %}
 
 
-
 {% block content %}
 
 
@@ -17,7 +16,6 @@ DOOMART
 <section class="product-slider-section">
 
     <div class="container">
-
 
         <div class="slider-heading">
 
@@ -36,7 +34,6 @@ DOOMART
             id="sliderMasDaninos"
             class="carousel slide doom-carousel"
         >
-
 
             <div class="carousel-indicators">
 
@@ -71,7 +68,6 @@ DOOMART
 
                             <article class="product-card">
 
-
                                 <div class="product-image-box">
 
                                     <img
@@ -83,11 +79,8 @@ DOOMART
                                         class="product-image"
                                     >
 
-
                                     <span class="product-badge">
-
                                         {{ producto['etiqueta'] }}
-
                                     </span>
 
                                 </div>
@@ -96,30 +89,22 @@ DOOMART
                                 <div class="product-content">
 
                                     <span class="product-company">
-
                                         {{ producto['empresa'] }}
-
                                     </span>
 
 
                                     <h3>
-
                                         {{ producto['nombre'] }}
-
                                     </h3>
 
 
                                     <p class="product-legend">
-
                                         {{ producto['leyenda'] }}
-
                                     </p>
 
 
                                     <p class="product-description">
-
                                         {{ producto['descripcion'] }}
-
                                     </p>
 
 
@@ -156,7 +141,6 @@ DOOMART
                                     </a>
 
                                 </div>
-
 
                             </article>
 
@@ -212,7 +196,6 @@ DOOMART
 
     <div class="container">
 
-
         <div class="slider-heading">
 
             <h2>
@@ -230,7 +213,6 @@ DOOMART
             id="sliderPulmones"
             class="carousel slide doom-carousel"
         >
-
 
             <div class="carousel-indicators">
 
@@ -265,7 +247,6 @@ DOOMART
 
                             <article class="product-card">
 
-
                                 <div class="product-image-box">
 
                                     <img
@@ -277,11 +258,8 @@ DOOMART
                                         class="product-image"
                                     >
 
-
                                     <span class="product-badge">
-
                                         {{ producto['etiqueta'] }}
-
                                     </span>
 
                                 </div>
@@ -290,30 +268,22 @@ DOOMART
                                 <div class="product-content">
 
                                     <span class="product-company">
-
                                         {{ producto['empresa'] }}
-
                                     </span>
 
 
                                     <h3>
-
                                         {{ producto['nombre'] }}
-
                                     </h3>
 
 
                                     <p class="product-legend">
-
                                         {{ producto['leyenda'] }}
-
                                     </p>
 
 
                                     <p class="product-description">
-
                                         {{ producto['descripcion'] }}
-
                                     </p>
 
 
@@ -350,7 +320,6 @@ DOOMART
                                     </a>
 
                                 </div>
-
 
                             </article>
 
@@ -412,7 +381,10 @@ DOOMART
             <div class="streak-logo">
 
                 <img
-                    src="{{ url_for('static', filename='img/logo.png') }}"
+                    src="{{ url_for(
+                        'static',
+                        filename='img/logo.png'
+                    ) }}"
                     alt="DOOMART"
                 >
 
@@ -430,6 +402,11 @@ DOOMART
             >
                 0
             </div>
+
+
+            <p class="streak-text">
+                Cada día cuenta.
+            </p>
 
 
             <div class="streak-buttons">
@@ -462,20 +439,282 @@ DOOMART
 
 
 <!-- ==================================================
+     NOTICIAS
+     ================================================== -->
+
+<section class="news-section">
+
+    <div class="container">
+
+
+        <div class="news-heading">
+
+            <h2>
+                CONTAMINACIÓN
+            </h2>
+
+            <p>
+                Checa noticias relacionadas con contaminación.
+            </p>
+
+        </div>
+
+
+
+        <!-- ==================================================
+             TLAXCALA
+             ================================================== -->
+
+        <div class="news-group">
+
+            <h3>
+                TLAXCALA
+            </h3>
+
+
+            <div class="row g-4">
+
+
+                <div class="col-12 col-md-6">
+
+                    <article class="news-card">
+
+                        <div class="news-image-box">
+
+                            <img
+                                src="{{ url_for(
+                                    'static',
+                                    filename='img/tlaxcala-1.jpg'
+                                ) }}"
+                                alt="Contaminación en Tlaxcala"
+                            >
+
+                            <a
+                                href="#"
+                                class="news-overlay"
+                            >
+                                CHECA LA NOTICIA
+                            </a>
+
+                        </div>
+
+
+                        <div class="news-content">
+
+                            <span>
+                                TLAXCALA
+                            </span>
+
+                            <h4>
+                                Noticia de contaminación en Tlaxcala
+                            </h4>
+
+                            <p>
+                                Reemplaza esta tarjeta con la
+                                noticia que investiguen para el proyecto.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+
+                <div class="col-12 col-md-6">
+
+                    <article class="news-card">
+
+                        <div class="news-image-box">
+
+                            <img
+                                src="{{ url_for(
+                                    'static',
+                                    filename='img/tlaxcala-2.jpg'
+                                ) }}"
+                                alt="Problema ambiental en Tlaxcala"
+                            >
+
+                            <a
+                                href="#"
+                                class="news-overlay"
+                            >
+                                CHECA LA NOTICIA
+                            </a>
+
+                        </div>
+
+
+                        <div class="news-content">
+
+                            <span>
+                                TLAXCALA
+                            </span>
+
+                            <h4>
+                                Problema ambiental de Tlaxcala
+                            </h4>
+
+                            <p>
+                                Agrega aquí el resumen de una
+                                segunda noticia.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ==================================================
+             MUNDIAL
+             ================================================== -->
+
+        <div class="news-group">
+
+            <h3>
+                MUNDIAL
+            </h3>
+
+
+            <div class="row g-4">
+
+
+                <div class="col-12 col-md-6">
+
+                    <article class="news-card">
+
+                        <div class="news-image-box">
+
+                            <img
+                                src="{{ url_for(
+                                    'static',
+                                    filename='img/mundial-1.jpg'
+                                ) }}"
+                                alt="Contaminación mundial"
+                            >
+
+                            <a
+                                href="#"
+                                class="news-overlay"
+                            >
+                                CHECA LA NOTICIA
+                            </a>
+
+                        </div>
+
+
+                        <div class="news-content">
+
+                            <span>
+                                MUNDIAL
+                            </span>
+
+                            <h4>
+                                Noticia mundial de contaminación
+                            </h4>
+
+                            <p>
+                                Agrega aquí el resumen de una
+                                noticia ambiental mundial.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+
+                <div class="col-12 col-md-6">
+
+                    <article class="news-card">
+
+                        <div class="news-image-box">
+
+                            <img
+                                src="{{ url_for(
+                                    'static',
+                                    filename='img/mundial-2.jpg'
+                                ) }}"
+                                alt="Problema ambiental mundial"
+                            >
+
+                            <a
+                                href="#"
+                                class="news-overlay"
+                            >
+                                CHECA LA NOTICIA
+                            </a>
+
+                        </div>
+
+
+                        <div class="news-content">
+
+                            <span>
+                                MUNDIAL
+                            </span>
+
+                            <h4>
+                                Problema ambiental mundial
+                            </h4>
+
+                            <p>
+                                Agrega aquí otra noticia ambiental.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
      FOOTER
      ================================================== -->
 
 <footer class="doom-footer">
 
-    <p>
-        Leonel Guevara Montellano · Luis Angel Martinez ·
-        Sebastian Palma · Juan Pablo Monterrosas
-    </p>
+    <div class="container">
 
-    <strong>
-        CADA VEZ QUE CONSUMES ESTOS PRODUCTOS IMPRIMES ESTOS
-        TICKETS. Y NO SOLO LOS PAGAS TÚ, LOS PAGA EL MUNDO.
-    </strong>
+        <p>
+            Leonel Guevara Montellano ·
+            Luis Angel Martinez ·
+            Sebastian Palma ·
+            Juan Pablo Monterrosas
+        </p>
+
+
+        <strong>
+            CADA VEZ QUE CONSUMES ESTOS PRODUCTOS
+            IMPRIMES ESTOS TICKETS.
+            Y NO SOLO LOS PAGAS TÚ,
+            LOS PAGA EL MUNDO.
+        </strong>
+
+    </div>
 
 </footer>
 
