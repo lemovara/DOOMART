@@ -10,7 +10,7 @@ def insertar_datos():
     try:
 
         # ==================================================
-        # LIMPIAR PRODUCTOS
+        # LIMPIAR PRODUCTOS Y EMPRESAS
         # ==================================================
 
         db.execute("DELETE FROM productos")
@@ -84,7 +84,7 @@ def insertar_datos():
             ),
 
             (
-                "ACH COAL",
+                "ARCH COAL",
                 "Empresa relacionada con producción energética.",
                 "Producción energética.",
                 "Pendiente de documentar.",
@@ -119,7 +119,7 @@ def insertar_datos():
 
 
         # ==================================================
-        # IDS
+        # OBTENER IDS DE LAS EMPRESAS
         # ==================================================
 
         registros = db.execute(
@@ -167,7 +167,7 @@ def insertar_datos():
                 "Producto alimenticio.",
                 "Producto asociado a DANONE.",
                 "danone.png",
-                "FALLOS RESPIRATORIOS",
+                "DIABETES",
                 "mas_daninos",
                 empresa_ids["DANONE"]
             ),
@@ -193,17 +193,21 @@ def insertar_datos():
             ),
 
             (
-                "ACH Coal",
+                "ARCH Coal",
                 "Producción energética.",
-                "Producto asociado a ACH COAL.",
-                "ach-coal.png",
+                "Producto asociado a ARCH COAL.",
+                "arch-coal.png",
                 "GASES TÓXICOS",
                 "pulmones",
-                empresa_ids["ACH COAL"]
+                empresa_ids["ARCH COAL"]
             )
 
         ]
 
+
+        # ==================================================
+        # INSERTAR PRODUCTOS
+        # ==================================================
 
         db.executemany(
             """
@@ -222,6 +226,10 @@ def insertar_datos():
             productos
         )
 
+
+        # ==================================================
+        # GUARDAR CAMBIOS
+        # ==================================================
 
         db.commit()
 
