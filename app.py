@@ -189,21 +189,29 @@ Es esencial que las autoridades y las empresas responsables actúen rápidamente
 
             {
                 "id": 1,
-                "titulo": "Contaminación a nivel mundial",
+                "titulo": "Residuos plásticos de Coca-Cola en océanos llegarán a 600.000 toneladas en 2030, según estudio",
                 "imagen": "mundial-1.jpg",
                 "texto": """
-                Aquí se colocará el contenido de la noticia
-                ambiental mundial.
+                Un reciente informe de la organización sin fines de lucro Oceana proyecta que, para el año 2030, los productos de Coca-Cola podrían generar más de 600.000 toneladas de residuos plásticos vertidos anualmente en los océanos y vías fluviales del mundo. Esta cifra alarmante equivale a aproximadamente 220.000 millones de botellas de 500 mililitros, lo que representa una amenaza significativa para la vida marina y los ecosistemas acuáticos. El informe llega en un contexto global marcado por la creciente presencia de microplásticos. 
+                El estudio destaca que Coca-Cola es actualmente el mayor contaminador de plástico a nivel mundial, seguida por empresas como PepsiCo, Nestlé, Danone y Altria. La previsión se basa en datos de envases publicados por Coca-Cola entre 2018 y 2023, combinados con estimaciones de crecimiento de ventas. Según Oceana, una solución efectiva para reducir esta contaminación sería implementar envases reutilizables. 
+                 Habrá 600.000 toneladas de plástico de Coca-Cola para el 2030
+
+                La estimación se basa en un modelo científico publicado en la revista Science en 2024, que calcula la proporción de residuos que llegan a ecosistemas acuáticos. Según el análisis, la cifra equivale a casi 220.000 millones de botellas plásticas de 500 mililitros. 
+                La ONG señala que la solución más efectiva pasa por retomar el uso de envases reutilizables, como las botellas de vidrio retornables, que pueden reutilizarse hasta 50 veces, o los envases de plástico PET reforzado, diseñados para al menos 25 usos. Estas alternativas, según los expertos, permitirían reducir drásticamente la contaminación y limitar la dependencia de plásticos de un solo uso.
+                "La contaminación de los océanos es enorme"
+                El informe se publica en un contexto de creciente preocupación por el impacto de los microplásticos en la salud humana, vinculados a enfermedades como el cáncer, problemas cardiovasculares e infertilidad. "Coca-Cola es, de lejos, el mayor fabricante y vendedor de bebidas del mundo. Por eso, su responsabilidad en la contaminación de los océanos es enorme", afirmó Matt Littlejohn, vicepresidente de campañas de Oceana, quien instó a la compañía a asumir un rol más activo en la solución del problema. 
                 """
             },
 
             {
                 "id": 2,
-                "titulo": "Problemas ambientales del mundo",
+                "titulo": " La contaminación causó 9 millones de muertes en 2019",
                 "imagen": "mundial-2.jpg",
                 "texto": """
-                Aquí se colocará el contenido de la segunda
-                noticia mundial.
+                Las repercusiones de la contaminación ambiental en nuestra salud siguen siendo muchas y preocupantes, y más aún en los llamados "países en vías de desarrollo". La contaminación, normalmente en las ciudades, provocó en 2019 nueve millones de muertes en todo el mundo, cifra que prácticamente no ha variado desde que se realizó el último estudio sobre el tema, en 2015. Así, en la actualización del informe The Lancet Commission on Pollution and Health, publicado en The Lancet Planetary Health, su autor principal, Richard Fuller, ha destacado que "pese a las graves consecuencias sanitarias, sociales y económicas, la prevención de la contaminación se pasa por alto, en gran medida, en la agenda internacional de desarrollo". El estudio afirma asimismo que, a pesar de que el número de muertes por fuentes de contaminación asociadas a la pobreza extrema, como la mala calidad del aire en interiores o la contaminación del agua, haya disminuido, estas reducciones desafortunadamente se ven contrarrestadas por un aumento de los fallecimientos como consecuencia de la contaminación industrial y química del aire que respiramos.
+                De hecho, en 2019, de los nueve millones de muertes en todo el planeta atribuibles a la contaminación, la mala calidad del aire, tanto doméstica como ambiental, fue la responsable de 6,67 millones; la contaminación del agua, de 1,36 millones; el plomo provocó 900.000 muertes, y los riesgos laborales tóxicos causaron 870.000 muertes. A este respecto, Philip Landrigan, director del Programa de Salud Pública Global y del Observatorio de la Contaminación Global del Boston College y uno de los autores del informe, afirma que "la contaminación sigue siendo la mayor amenaza existencial para la salud humana y planetaria y pone en peligro la sostenibilidad de las sociedades modernas. La prevención de la contaminación también puede ralentizar el cambio climático –logrando un doble beneficio para la salud planetaria– y nuestro informe pide una transición masiva y rápida para abandonar todos los combustibles fósiles y pasar a las energías limpias y renovables".
+                La contaminación, una arma silenciosa
+                En cuanto al descenso de las muertes causadas por la contaminación del aire en los hogares y por el consumo de agua no potable desde el año 2000 es más evidente en África. Esto se debe a las mejoras en el suministro hidráulico, en el saneamiento, a la presencia de combustibles más limpios y a una mayor facilidad de acceso a antibióticos y tratamientos médicos. Sin embargo, como hemos apuntado, este descenso de la mortalidad se ha visto contrarrestado por un aumento importante de las muertes por exposición a la contaminación por plomo y otras formas de contaminación química en todo el mundo durante los últimos veinte años, en especial en el Sudeste Asiático, donde al aumento de los niveles de contaminación industrial se ha de añadir el envejecimiento de la población y un incremento del número de personas expuestas a esta amenaza.
                 """
             }
 
