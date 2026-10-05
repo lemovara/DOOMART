@@ -2,14 +2,15 @@
    DOOMART
    ========================================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap'); /*biblioteca para margenes*/
 * {
-    box-sizing: border-box;
+    box-sizing: border-box; 
 }
 
 
 html {
-    scroll-behavior: smooth;
+    scroll-behavior: smooth; /*sensacion al direccionar a otra seccion*/
 }
 
 
@@ -17,7 +18,7 @@ html {
         margin: 0;
         background: #ffffff;
         color: #111111;
-        font-family: "Noto Sans", sans-serif;
+        font-family: "Noto Sans", sans-serif; /*tipografia*/
     }
     
 
@@ -30,7 +31,7 @@ html {
     border-bottom: 2px solid #111111;
     position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 1000; 
 }
 
 
@@ -47,7 +48,7 @@ html {
     text-decoration: none;
     font-size: clamp(1.7rem, 4vw, 2.7rem);
     font-weight: 900;
-    letter-spacing: -4px;
+    letter-spacing: -1px;
     font-family: "Oswald", sans-serif;
 
 }

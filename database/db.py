@@ -10,7 +10,7 @@ def get_db():
     connection = sqlite3.connect(DATABASE_PATH)
     connection.row_factory = sqlite3.Row
     return connection
-
+#para que no salgan como listas simples y salga 
 
 def close_db(connection):
     if connection is not None:

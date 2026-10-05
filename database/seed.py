@@ -32,7 +32,7 @@ def insertar_datos():
         "El agua es un recurso fundamental para la fabricación de sus bebidas. La empresa establece objetivos de reposición de agua y de eficiencia hídrica, especialmente en zonas de alto riesgo hídrico.",
         "Utiliza grandes cantidades de agua, energía, materias primas agrícolas y materiales para fabricar y distribuir sus productos.",
         "Sus productos utilizan principalmente envases de plástico, aluminio y vidrio. La empresa trabaja en aumentar el contenido reciclado y mejorar la recolección y reciclaje de botellas y latas.",
-        "Coca-Cola Company, Environmental Policy y Environment, información ambiental consultada en 2026."
+        "Coca-Cola Company, Environmental Policy y Environment, información ambiental consultada en Septiembre 2026."
     ),
 
     (
