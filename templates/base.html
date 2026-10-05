@@ -31,7 +31,25 @@
 
 
 <body>
+<!-- =====================================================
+     SPLASH SCREEN
+     ===================================================== -->
 
+<div
+    id="splash-screen"
+    class="splash-screen"
+>
+
+    <img
+        src="{{ url_for(
+            'static',
+            filename='img/logo.png'
+        ) }}"
+        alt="DOOMART"
+        class="splash-logo"
+    >
+
+</div>
 
     <!-- ==================================================
          HEADER
@@ -230,8 +248,10 @@
 
 <div
     id="damage-ticket-overlay"
+    
     class="damage-ticket-overlay"
 >
+
 
     <div
         id="damage-ticket"
@@ -251,6 +271,7 @@
             <div class="ticket-line"></div>
 
         </div>
+        
 
 
         <div class="ticket-intro">
@@ -297,6 +318,12 @@
 
     </div>
 
+</div>
+<div
+    id="break-message"
+    class="break-message"
+>
+    ¡NO CONSUMAS LO QUE NOS DAÑA!
 </div>
 
     <script

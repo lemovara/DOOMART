@@ -1,4 +1,24 @@
 // =========================================================
+// SONIDOS
+// =========================================================
+
+const ticketSound =
+    new Audio(
+        "/static/audio/ticket.mp3"
+    );
+
+
+const paperBreakSound =
+    new Audio(
+        "/static/audio/paper-break.mp3"
+    );
+
+
+ticketSound.volume = 0.7;
+
+paperBreakSound.volume = 0.8;
+
+// =========================================================
 // DOOMART
 // =========================================================
 
@@ -606,14 +626,29 @@ async function generateTicket() {
         }
 
 
-        renderDamageTicket(
-            data.productos
+       renderDamageTicket(
+    data.productos
+);
+
+
+ticketSound.currentTime = 0;
+
+
+ticketSound.play().catch(
+    error => {
+
+        console.log(
+            "El navegador bloqueó el sonido:",
+            error
         );
 
+    }
+);
 
-        closeCart();
 
-        openDamageTicket();
+closeCart();
+
+openDamageTicket();
 
 
     } catch (error) {
@@ -902,43 +937,82 @@ function setupBreakTicket() {
     }
 
 
-    button.addEventListener(
-        "click",
-        () => {
+   button.addEventListener(
+    "click",
+    () => {
 
-            const ticket =
-                document.getElementById(
-                    "damage-ticket"
-                );
-
-
-            ticket.classList.add(
-                "breaking"
+        const ticket =
+            document.getElementById(
+                "damage-ticket"
             );
 
 
-            setTimeout(
-                () => {
-
-                    overlay.classList.remove(
-                        "show"
-                    );
+        paperBreakSound.currentTime = 0;
 
 
-                    ticket.classList.remove(
-                        "breaking"
-                    );
+        paperBreakSound.play().catch(
+            error => {
+
+                console.log(
+                    "El navegador bloqueó el sonido:",
+                    error
+                );
+
+            }
+        );
 
 
-                    document.body.style.overflow =
-                        "";
+        ticket.classList.add(
+            "breaking"
+        );
 
-                },
-                550
+
+        const message =
+            document.getElementById(
+                "break-message"
+            );
+
+
+        if (message) {
+
+            message.classList.add(
+                "show"
             );
 
         }
-    );
+
+
+        setTimeout(
+            () => {
+
+                overlay.classList.remove(
+                    "show"
+                );
+
+
+                ticket.classList.remove(
+                    "breaking"
+                );
+
+
+                if (message) {
+
+                    message.classList.remove(
+                        "show"
+                    );
+
+                }
+
+
+                document.body.style.overflow =
+                    "";
+
+            },
+            1100
+        );
+
+    }
+);
 
 }
 
@@ -1211,3 +1285,44 @@ function escapeHtml(value) {
         );
 
 }
+
+// =========================================================
+// SPLASH SCREEN
+// =========================================================
+
+window.addEventListener(
+    "load",
+    () => {
+
+        const splash =
+            document.getElementById(
+                "splash-screen"
+            );
+
+
+        if (!splash) {
+
+            return;
+
+        }
+
+
+        setTimeout(
+            () => {
+
+                splash.classList.add(
+                    "hide"
+                );
+
+            },
+            1200
+        );
+
+    }
+);
+
+breakMessage.classList.add("show");
+
+setTimeout(() => {
+    breakMessage.classList.remove("show");
+}, 2000);
